@@ -7,7 +7,7 @@ namespace ContactsManager.Controllers
     public class HomeController : Controller
     {      
 
-        public IActionResult Index(IFormFile file)
+        public IActionResult Index()
         {         
         
             return View();

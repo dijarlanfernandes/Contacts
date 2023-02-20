@@ -1,11 +1,10 @@
 using ContactsManager.Data;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.SqlServer.Design;
+using ContactsManager.Helper;
 using ContactsManager.Repositories.ContactRepository.Contract;
 using ContactsManager.Repositories.ContactRepository.Interface;
 using ContactsManager.Repositories.UserRepository.Contract;
 using ContactsManager.Repositories.UserRepository.Interface;
-using Microsoft.AspNetCore.SignalR;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -15,8 +14,15 @@ builder.Services.AddDbContext<ContactContext>(options =>
 {
     options.UseSqlServer(connection);
 });
+builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+builder.Services.AddScoped<ContactsManager.Helper.ISession, Session>();
 builder.Services.AddScoped<IRoleRepo, RoleRepo>();
 builder.Services.AddScoped<IContactRepo, ContactRepo>();
+builder.Services.AddSession(x =>
+{
+    x.Cookie.HttpOnly = true;
+    x.Cookie.IsEssential = true;
+});
 
 
 builder.Services.AddControllersWithViews();
@@ -35,7 +41,7 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
-
+app.UseSession();   
 app.UseAuthorization();
 
 app.MapControllerRoute(

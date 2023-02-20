@@ -1,0 +1,29 @@
+﻿@model IEnumerable<ContactModel>
+
+
+<span>Lista de Contatos</span><br />
+<a asp-action="NewContact" asp-controller="Contacts" class="p-3">Novo contato</a>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">@Html.DisplayNameFor(x=>x.Id)</th>
+            <th scope="col">@Html.DisplayNameFor(x=>x.Name)</th>
+            <th scope="col">@Html.DisplayNameFor(x=>x.Email)</th>
+            <th scope="col">@Html.DisplayNameFor(x=>x.Phone)</th>
+            <th scope="col">@Html.DisplayNameFor(x=>x.CelPhone)</th>
+            
+        </tr>
+    </thead>
+    @foreach(var contatos in Model){    
+    <tbody>
+        <tr>            
+            <td>@contatos.Id)</td>
+            <td>@contatos.Name</td>
+            <td>@contatos.Email</td>
+            <td>@contatos.Phone</td>
+            <td>@contatos.CelPhone</td>      
+        </tr>      
+    </tbody>
+    }
+</table>
+  

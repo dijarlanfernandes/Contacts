@@ -21,9 +21,9 @@ namespace ContactsManager.Repositories.ContactRepository.Contract
             await _context.SaveChangesAsync();
         }
 
-        public async Task<IEnumerable<ContactModel>> GetAllContactsAsync(string userid)
+        public async Task<IEnumerable<ContactModel>> GetAllContactsAsync()
         {
-            return await _context.Contacts.Where(x=>x.UserId == userid).ToListAsync();
+            return await _context.Contacts.ToListAsync();
         }
 
         public async Task<ContactModel> GetContactByIdAsync(string id)

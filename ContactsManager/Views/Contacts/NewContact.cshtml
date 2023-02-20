@@ -1,0 +1,30 @@
+﻿@model ContactModel
+
+<form asp-controller="Contacts" asp-action="NewContact" method="post" role="form">
+    
+        <div class="form-group">
+            <label class="form-control" asp-for="Name"></label>
+            <input class="form-control" asp-for="Name" type="text" placeholder="Insira o nome" />
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+        <div class="form-text">
+            <label class="form-control" asp-for="Email"></label>
+            <input class="form-control" asp-for="Email" type="text" placeholder="Insira o Email" />
+            <span asp-validation-for="Email" class="text-danger"></span>
+        </div>
+        <div class="form-text">
+            <label class="form-control" asp-for="Phone"></label>
+            <input class="form-control" asp-for="Phone" type="text" placeholder="Insira A Telefone" />
+            <span asp-validation-for="Phone" class="text-danger"></span>
+        </div>
+        <div class="form-text">
+        <label class="form-control" asp-for="CelPhone"></label>
+        <input class="form-control" asp-for="CelPhone" type="text" placeholder="Insira o Celular" />
+            <span asp-validation-for="CelPhone" class="text-danger"></span>
+        </div>
+        <div>
+            <input class="btn btn-success"type="submit" value="Add"/>
+            <input class="btn btn-success" asp-action="index" asp-controller="Contacts" type="submit" value="Voltar"/>
+        </div>
+   
+</form>
