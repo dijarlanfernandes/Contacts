@@ -15,10 +15,8 @@ builder.Services.AddDbContext<ContactContext>(options =>
 {
     options.UseSqlServer(connection);
 });
-builder.Services.AddScoped<IUserRepo, UserRepo>();
+builder.Services.AddScoped<IRoleRepo, RoleRepo>();
 builder.Services.AddScoped<IContactRepo, ContactRepo>();
-
-
 
 
 builder.Services.AddControllersWithViews();

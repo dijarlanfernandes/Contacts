@@ -12,6 +12,8 @@ namespace ContactsManager.Models
         [DisplayName("Nome")]
         [StringLength(255)]
         public string Name { get; set; }
+        public DateTime CreatedDate { get; set; }
+        public DateTime UpdatedDate { get; set; }
         [Required(ErrorMessage ="Campo Obrigatório")]
         [DisplayName("E-mail")]
         [StringLength(155)]
@@ -21,5 +23,7 @@ namespace ContactsManager.Models
         [DisplayName("Senha")]
         [DataType(DataType.Password)]
         public string Password { get; set; }
+        public List<ContactModel> Contacts { get; set; }
+        public List<RoleModel> roles { get; set; }
     }
 }

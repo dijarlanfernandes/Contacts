@@ -6,11 +6,11 @@ using System.Security.Cryptography.Xml;
 
 namespace ContactsManager.Repositories.UserRepository.Contract
 {
-    public class UserRepo : IUserRepo
+    public class RoleRepo : IRoleRepo
     {
         private readonly ContactContext _contactContext;
 
-        public UserRepo(ContactContext contactContext)
+        public RoleRepo(ContactContext contactContext)
         {
             _contactContext = contactContext;
         }

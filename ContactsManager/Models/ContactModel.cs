@@ -17,8 +17,7 @@ namespace ContactsManager.Models
         [StringLength(100)]
         [DisplayName("E-mail")]
         [DataType(DataType.EmailAddress)]
-        public string Email { get; set; }
-        public DateTime CreatedDate { get; set; }
+        public string Email { get; set; }       
         [Required(ErrorMessage = "Por favor insira seu Telefone")]
         [StringLength(100)]
         [DisplayName("Telefone")]
@@ -27,6 +26,9 @@ namespace ContactsManager.Models
         [StringLength(11,ErrorMessage ="Permitido somente 11 numeros")]
         [DisplayName("Celular")]
         public string CelPhone { get; set; }
+
+        public UserModel User { get; set; }
+        public string UserId { get; set; }
 
 
     }
