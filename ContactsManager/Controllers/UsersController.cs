@@ -1,6 +1,7 @@
 ﻿using ContactsManager.Models;
 using ContactsManager.Repositories.UserRepository.Interface;
 using Microsoft.AspNetCore.Mvc;
+using System.ComponentModel.DataAnnotations;
 
 namespace ContactsManager.Controllers
 {
@@ -13,12 +14,18 @@ namespace ContactsManager.Controllers
             _userRepo = userRepo;
         }
 
-        public ActionResult<IEnumerable<UserModel>> Index()
+        public async Task<ActionResult<IEnumerable<UserModel>>> Index()
         {
-            var model =  _userRepo.GetAllUsers();
+            var model = await _userRepo.GetAllUsers();
             return View(model);
         }
-        public async Task<ActionResult<UserModel>> AddUser(UserModel user)
+        public IActionResult AddUser()
+        {
+            return View();
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult<UserModel>> AddUser(UserModel user, string email, string name)
         {
 
             if (ModelState.IsValid)
@@ -28,12 +35,24 @@ namespace ContactsManager.Controllers
                 {
                      new Exception("Erro!!");
                 }
-                await _userRepo.InsertUser(user);
-                
+                else
+                {
+                   var namevalidate = await _userRepo.GetUserByName(name);
+                   var emailvalidate= await _userRepo.GetUserByEmail(email);
+                    if (namevalidate == null)
+                    {
+                        if (emailvalidate == null)
+                            {
+                                await _userRepo.InsertUser(user);
+                            }                    
+                        ModelState.AddModelError("Email","Email de usuario já existe!");
+                    }
+                   ModelState.AddModelError("Email","Nome de usuario já existe!");
+                }                
             }
             else
             {
-                ModelState.AddModelError("","não foi possivel");
+                ModelState.AddModelError("","não foi possivel ");
             }           
 
             return View(user);

@@ -26,5 +26,11 @@ namespace ContactsManager.Models
         public string Password { get; set; }
         public List<ContactModel> Contacts { get; set; }
         public List<RoleModel> roles { get; set; }
+
+        public bool validatePassword(string password)
+        {
+            return Password == password;
+        }
+        
     }
 }

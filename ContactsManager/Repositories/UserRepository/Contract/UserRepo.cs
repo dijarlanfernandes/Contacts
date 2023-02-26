@@ -31,6 +31,15 @@ namespace ContactsManager.Repositories.UserRepository.Contract
             return await _contactContext.Users.ToListAsync();
         }
 
+        public async Task<UserModel> GetUserByEmail(string email)
+        {
+            return await _contactContext.Users.FirstOrDefaultAsync(x => x.Email == email);
+        }
+        public async Task<UserModel> GetUserByName(string name)
+        {
+            return await _contactContext.Users.FirstOrDefaultAsync(x => x.Name == name);
+        }
+
         public async Task<UserModel> GetUsersById(string id)
         {
             if (id == null) new Exception("id not found");
@@ -46,7 +55,6 @@ namespace ContactsManager.Repositories.UserRepository.Contract
             }
             var usermodel = await _contactContext.Users.AddAsync(User);
             await _contactContext.SaveChangesAsync();
-
             return usermodel.Entity; 
         }
 
