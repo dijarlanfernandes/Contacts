@@ -16,7 +16,7 @@ builder.Services.AddDbContext<ContactContext>(options =>
 });
 builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 builder.Services.AddScoped<ContactsManager.Helper.ISession, Session>();
-builder.Services.AddScoped<IRoleRepo, RoleRepo>();
+builder.Services.AddScoped<IUserRepo, UserRepo>();
 builder.Services.AddScoped<IContactRepo, ContactRepo>();
 builder.Services.AddSession(x =>
 {

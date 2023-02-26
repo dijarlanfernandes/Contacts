@@ -29,7 +29,7 @@ namespace ContactsManager.Controllers
         public async Task<ActionResult<ContactModel>> NewContact( ContactModel model)
         {
             if (!ModelState.IsValid)
-               return View(model);                        
+               return View(model);                
              var contact = await _contactRepo.InsertContact(model);
             return RedirectToAction("index");
         }

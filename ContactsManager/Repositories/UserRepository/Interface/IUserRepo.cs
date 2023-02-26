@@ -2,7 +2,7 @@
 
 namespace ContactsManager.Repositories.UserRepository.Interface
 {
-    public interface IRoleRepo
+    public interface IUserRepo
     {
         Task<IEnumerable<UserModel>> GetAllUsers();
         Task<UserModel> GetUsersById(string id);

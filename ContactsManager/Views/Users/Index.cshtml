@@ -1,0 +1,26 @@
+﻿@model IEnumerable<UserModel>
+
+    <a class="link-info" asp-action="Adduser">Novo usuário</a>
+
+<div class="container mt-3">
+    <h2>Small Table</h2>
+    <p>The .table-sm class makes the table smaller by cutting cell padding in half:</p>
+    <table class="table table-bordered table-sm">
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Email</th>
+                <th>Senha</th>                
+            </tr>
+        </thead>
+        @foreach(var iten in Model){
+            <tbody>
+                <tr>
+                    <td>@iten.Name</td>
+                    <td>@iten.Email</td>
+                    <td>@iten.Password</td>
+                </tr>               
+            </tbody>
+        }
+    </table>
+</div>

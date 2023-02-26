@@ -4,6 +4,7 @@ using System.Runtime.CompilerServices;
 
 namespace ContactsManager.Models
 {
+
     public class UserModel
     {
         [Key]
